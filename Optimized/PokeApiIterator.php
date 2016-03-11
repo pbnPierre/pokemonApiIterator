@@ -3,7 +3,7 @@
 class PokeApiIterator implements Iterator
 {
     const API_BASE_URL = 'http://pokeapi.co/api/v2/pokemon/';
-    const DEFAULT_PAGE_SIZE = 2;
+    const DEFAULT_PAGE_SIZE = 10;
 
     protected
         $apiCache,
@@ -28,10 +28,6 @@ class PokeApiIterator implements Iterator
 
     public function current()
     {
-        if ($this->apiCache == null) {
-            $this->currentPage++;
-        }
-
         return $this->apiCache[$this->apiCacheIndex];
     }
 
@@ -46,6 +42,7 @@ class PokeApiIterator implements Iterator
         $this->apiCacheIndex++;
 
         if (!isset($this->apiCache[$this->apiCacheIndex])) {
+            $this->currentPage++;
             $this->fetchPageData($this->currentPage);
         }
     }
