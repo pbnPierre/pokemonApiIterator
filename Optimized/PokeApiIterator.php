@@ -3,7 +3,7 @@
 class PokeApiIterator implements Iterator
 {
     const API_BASE_URL = 'http://pokeapi.co/api/v2/pokemon/';
-    const DEFAULT_PAGE_SIZE = 50;
+    const DEFAULT_PAGE_SIZE = 2;
 
     protected
         $apiCache,
